@@ -31,6 +31,18 @@ func main() {
 		log.Fatal("Failed to connect to database:", err)
 	}
 
+	sqlDB, err := db.DB()
+	if err != nil {
+		log.Fatalf("Failed to get the database object: %v", err)
+	}
+
+	err = sqlDB.Ping()
+	if err != nil {
+		log.Fatalf("Could not ping the database: %v", err)
+	}
+
+	fmt.Println("Successfully connected to the database!")
+
 	// Initialize Redis client
 	redisClient = redis.NewClient(&redis.Options{
 		Addr: fmt.Sprintf("%s:%s", os.Getenv("REDIS_HOST"), os.Getenv("REDIS_PORT")),
@@ -40,6 +52,10 @@ func main() {
 	router := gin.Default()
 
 	router.GET("/", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{"message": "project running!"})
+	})
+
+	router.GET("/hello", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"message": "Hello, World!"})
 	})
 
