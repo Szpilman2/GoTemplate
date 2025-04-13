@@ -1,7 +1,3 @@
-Sure! Here’s a well-structured and informative README that you can use for your "Go Template" project:
-
----
-
 # Go Template
 
 This repository provides a simple and reusable **Go Template** to kickstart your Go-based web applications with a fully-configured development environment. It combines the power of **Gin** for the web framework, **Gorm** for ORM and PostgreSQL integration, and **Redis** for caching and other purposes. The setup also includes **Docker**, **Docker Compose**, and **Air** for live reloading during development.
